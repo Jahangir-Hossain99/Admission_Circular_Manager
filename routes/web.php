@@ -8,3 +8,8 @@ Route::get('/', function () {
 });
 
 Route::resource('users', UserController::class);
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::resource('admin/users', UserController::class);
+});
+
