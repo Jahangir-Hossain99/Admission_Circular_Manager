@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\PortalController;
+
 
 class UserController extends Controller
 {
@@ -39,7 +41,7 @@ class UserController extends Controller
         $validate['password'] = Hash::make($request->password);
         User::create($validate);
 
-        return redirect()->route('users.index')->with('success', 'User created successfully.');
+        return redirect()->route('circulars.index')->with('success', 'User created successfully.');
     }
 
     /**

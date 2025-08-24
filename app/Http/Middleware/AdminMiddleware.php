@@ -13,11 +13,15 @@ class AdminMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
-    {
-        if (auth()->check() && auth()->user()->role === 'admin') {
-            return $next($request);
-        }
-        abort(403, 'Unauthorized');
+   public function handle(Request $request, Closure $next): Response
+{
+    if (auth()->check() && auth()->user()->role === 'admin') {
+        return $next($request);
     }
+
+    // Redirect to the 'users.show' route, passing the user's ID as a parameter.
+    return redirect()->route('circulars.index', ['user' => auth()->id()])
+        ->with('error', 'You do not have admin access.');
+}
+
 }

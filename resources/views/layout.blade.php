@@ -16,8 +16,9 @@
         <div class="max-w-7xl mx-auto px-4 py-4 flex items-center">
             <a class="text-white font-bold text-xl tracking-wide" href="#">Admission Circular Manager</a>
             <div class="ml-auto">
-                <a href="#" class="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-600">Log In</a>
-                <a href="#" class="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-600">Register</a>
+                <a href="{{ route('login') }}" class="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-600">Log In</a>
+                <a href="{{ route('users.create') }}" class="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-600">Register</a>
+                <a href="{{ route('circulars.create') }}" class="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-600">Create Post</a>
         </div>
     </nav>
     @show
@@ -26,7 +27,7 @@
         <aside class="hidden md:block w-64 bg-white shadow min-h-screen py-8">
             <ul class="space-y-2 px-4">
                 <li>
-                    <a href="{{ url('/') }}"
+                    <a href="{{ route('admin.dashboard') }}"
                        class="block px-4 py-2 rounded-lg font-medium transition
                        {{ request()->is('/') ? 'bg-blue-100 text-blue-800' : 'text-blue-700 hover:bg-blue-50' }}">
                         Dashboard
@@ -40,10 +41,10 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('/departments') }}"
+                    <a href="{{ route('users.index') }}"
                        class="block px-4 py-2 rounded-lg font-medium transition
                        {{ request()->is('departments*') ? 'bg-blue-100 text-blue-800' : 'text-blue-700 hover:bg-blue-50' }}">
-                        Departments
+                        Users
                     </a>
                 </li>
                 <li>
