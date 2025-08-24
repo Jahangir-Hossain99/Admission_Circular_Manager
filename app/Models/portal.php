@@ -4,14 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class portal extends Model
+class Portal extends Model
 {
+    protected $table = "portals";
     protected $fillable = [
-        'UniversityName',
-        'ProgrameName',
-        'Description',
-        'ApplicationDeadline',
-        'Status',
-        'Link',
+        "UniversityName",
+        "ProgramName",
+        "Description",
+        "ApplicationDeadline",
+        "Status",
+        "Link",
     ];
 }

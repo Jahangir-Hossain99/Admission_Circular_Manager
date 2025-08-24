@@ -43,43 +43,14 @@ class AdminController extends Controller
         ])->onlyInput('email');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+     public function logout(Request $request)
     {
-        //
-    }
+        Auth::logout(); // This logs out the user
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Admin $admin)
-    {
-        //
-    }
+        $request->session()->invalidate(); // This invalidates the current session
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Admin $admin)
-    {
-        //
-    }
+        $request->session()->regenerateToken(); // This regenerates the CSRF token
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Admin $admin)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Admin $admin)
-    {
-        //
+        return redirect('/'); // Redirects to the home page after logging out
     }
 }
