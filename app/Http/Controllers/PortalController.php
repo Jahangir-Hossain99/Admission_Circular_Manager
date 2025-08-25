@@ -9,8 +9,22 @@ class PortalController extends Controller
 {
     public function index()
     {
-        $circulars = Portal::all();
-        return view("circulars.index", compact("circulars"));
+       // First, check if a user is authenticated.
+    if (auth()->check()) {
+        // If a user is logged in, check if they are an admin.
+        if (auth()->user()->role === 'admin') {
+            // If the user is an admin, fetch all circulars.
+            $circulars = Portal::all();
+        } else {
+            // If the user is logged in but NOT an admin, fetch only active circulars.
+            $circulars = Portal::where('Status', 'Active')->get();
+        }
+    } else {
+        // If no user is authenticated (a guest), fetch only active circulars.
+        $circulars = Portal::where('Status', 'Active')->get();
+    }
+
+    return view("circulars.index", compact("circulars"));
     }
 
     public function create()

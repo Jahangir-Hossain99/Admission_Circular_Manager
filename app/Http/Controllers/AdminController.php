@@ -6,6 +6,7 @@ use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Portal;
 
 class AdminController extends Controller
 {
@@ -15,7 +16,8 @@ class AdminController extends Controller
     public function dashboard()
     {
         $users = User::all();
-        return view("admin.dashboard", compact("users"));
+        $circulars = Portal::all();
+        return view("admin.dashboard", compact("users","circulars"));
     }
 
     /**
@@ -40,7 +42,8 @@ class AdminController extends Controller
         // Authentication failed, redirect back with an error message
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
+            'password' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email','password');
     }
 
      public function logout(Request $request)

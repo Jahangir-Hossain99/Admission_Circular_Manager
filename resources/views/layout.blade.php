@@ -17,7 +17,7 @@
     @section('header')
     <nav class="bg-blue-700">
         <div class="max-w-7xl mx-auto px-4 py-4 flex items-center">
-            <a class="text-white font-bold text-xl tracking-wide" href="#">Admission Circular Manager</a>
+            <a class="text-white font-bold text-xl tracking-wide" href="{{ route('circulars.index') }}">Admission Circular Manager</a>
             <div class="ml-auto flex items-center space-x-4">
                 @auth
                     {{-- Links for logged-in users --}}
@@ -48,10 +48,10 @@
     @show
 
     <div class="flex flex-1">
-        @auth
-            <aside class="hidden md:block w-64 bg-white shadow min-h-screen py-8">
-                <ul class="space-y-2 px-4">
-                    {{-- Dashboard and Settings links for admin only --}}
+        <aside class="hidden md:block w-64 bg-white shadow min-h-screen py-8">
+            <ul class="space-y-2 px-4">
+                @auth
+                    {{-- Links for logged-in users --}}
                     @if ($user->role === 'admin')
                         <li>
                             <a href="{{ route('admin.dashboard') }}"
@@ -65,13 +65,6 @@
                                class="block px-4 py-2 rounded-lg font-medium transition
                                {{ request()->is('users') ? 'bg-blue-100 text-blue-800' : 'text-blue-700 hover:bg-blue-50' }}">
                                 Users
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ url('/settings') }}"
-                               class="block px-4 py-2 rounded-lg font-medium transition
-                               {{ request()->is('settings*') ? 'bg-blue-100 text-blue-800' : 'text-blue-700 hover:bg-blue-50' }}">
-                                Settings
                             </a>
                         </li>
                     @else
@@ -92,9 +85,37 @@
                             Circulars
                         </a>
                     </li>
-                </ul>
-            </aside>
-        @endauth
+                @else
+                    {{-- Links for guests (not logged in) --}}
+                    <li>
+                        <a href="{{ route('login') }}"
+                           class="block px-4 py-2 rounded-lg font-medium transition
+                           {{ request()->is('login') ? 'bg-blue-100 text-blue-800' : 'text-blue-700 hover:bg-blue-50' }}">
+                            Log In
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('users.create') }}"
+                           class="block px-4 py-2 rounded-lg font-medium transition
+                           {{ request()->is('users/create') ? 'bg-blue-100 text-blue-800' : 'text-blue-700 hover:bg-blue-50' }}">
+                            Register
+                        </a>
+                    </li>
+
+                @endauth
+            </ul>
+            @if(auth()->check() && auth()->user()->role === 'admin')
+            <ul class="px-4 mt-auto">
+                <li>
+                    <a href="{{ url('/settings') }}"
+                       class="block px-4 py-2 rounded-lg font-medium transition text-blue-700 hover:bg-blue-50
+                       {{ request()->is('settings*') ? 'bg-blue-100 text-blue-800' : 'text-blue-700 hover:bg-blue-50' }}">
+                        Settings
+                    </a>
+                </li>
+            </ul>
+            @endif
+        </aside>
         
         <main class="flex-1 p-8">
             {{-- Session alerts section --}}

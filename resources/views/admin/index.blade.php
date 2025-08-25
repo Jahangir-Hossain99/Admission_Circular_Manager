@@ -1,4 +1,4 @@
-@extends('layout');
+@extends('layout')
 
 @section('content')
     <h1 class="text-center my-4">All Users</h1>

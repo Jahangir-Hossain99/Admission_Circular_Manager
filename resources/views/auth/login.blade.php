@@ -4,6 +4,13 @@
 <div class=" flex items-center justify-center ">
 <div class="w-full max-w-md bg-white p-8 rounded-xl shadow-lg text-center">
         <h2 class="text-3xl font-bold mb-6 text-blue-600">Welcome Back</h2>
+
+        @if ($errors->has('email'))
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                <span class="block sm:inline">{{ $errors->first('email') }}</span>
+            </div>
+        @endif
+
         <form action="{{ route('login') }}" method="POST">
             @csrf
             <div class="mb-4 text-left">

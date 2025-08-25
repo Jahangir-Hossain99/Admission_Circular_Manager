@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PortalController;
+use App\Models\Portal;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -13,9 +14,7 @@ Route::get('login', function () {
 Route::post('login', [AdminController::class, 'login']);
 Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PortalController::class, 'index']);
 
 //User Management
 Route::resource('users', UserController::class)->except('index');
