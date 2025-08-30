@@ -21,7 +21,12 @@ Route::post('password/store', [AdminController::class, 'store'])->name('password
 
 //User Management
 Route::resource('users', UserController::class)->except('index');
-Route::resource('circulars', PortalController::class)->except('destroy','create','edit','update');
+Route::get('circulars/show',function ()  {
+    return "this is show method";
+})->name('circulars.show');
+
+Route::get('circulars/index',[PortalController::class, 'index'])->name('circulars.index');
+Route::get('circulars/show',[PortalController::class,'show'])->name('circulars.show');
 
 Route::middleware(['admin:user'])->group(function () {
     Route::post('/applications/store', [Applications::class, 'store'])->name('application.store');
@@ -34,7 +39,9 @@ Route::middleware(['admin:admin'])->group(function () {
     Route::get('admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('users', UserController::class . '@index')->name('users.index');
     Route::delete('circulars/{id}', [PortalController::class, 'destroy'])->name('circulars.destroy');
-    Route::get('circulars/create', [PortalController::class, 'create'])->name('circulars.create');
+    
+    Route::get('circulars/create', [PortalController::class,'create'])->name('circulars.create');
+
     Route::post('circulars', [PortalController::class, 'store'])->name('circulars.store');
     Route::get('circulars/{id}/edit', [PortalController::class, 'edit'])->name('circulars.edit');
     Route::put('circulars/{id}', [PortalController::class, 'update'])->name('circulars.update');

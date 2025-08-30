@@ -131,7 +131,7 @@
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap">{{ $loop->iteration }}</td>
                             <td class="px-6 py-4 whitespace-nowrap">{{ $app->user->name }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap">{{ $app->circular->UniversityName }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">{{ $app->portal->UniversityName }}</td>
                             <td class="px-6 py-4 whitespace-nowrap">{{ ucfirst($app->Status) }}</td>
                         </tr>
                         @empty

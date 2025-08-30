@@ -15,7 +15,7 @@ class Applications extends Controller
      */
     public function index()
     {
-        $applications = Application::with(['user', 'circular'])->latest()->get();
+        $applications = Application::with(['user', 'portal'])->latest()->get();
         return view('admin.application', compact('applications'));
     }
 
@@ -62,7 +62,7 @@ public function update(Request $request, $id)
     public function list()
     {
         $userId = Auth::id();
-        $applications = Application::with('circular')
+        $applications = Application::with('portal')
                                    ->where('user_id', $userId)
                                    ->latest()
                                    ->get();

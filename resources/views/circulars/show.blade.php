@@ -22,7 +22,7 @@
                             <!-- User not applied yet -->
                             <form action="{{ route('application.store') }}" method="POST">
                                 @csrf
-                                <input type="hidden" name="circular_id" value="{{ $circular->id }}">
+                                <input type="hidden" name="portal_id" value="{{ $circular->id }}">
                                 <button type="submit" class="bg-purple-600 text-white px-3 py-1 rounded">
                                     📝 Apply
                                 </button>

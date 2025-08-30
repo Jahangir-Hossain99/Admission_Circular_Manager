@@ -30,10 +30,10 @@
                                 {{ $application->user->email }}
                             </td>
                             <td class="px-4 py-2 text-sm text-gray-700">
-                                {{ $application->circular->UniversityName }}
+                                {{ $application->portal->UniversityName }}
                             </td>
                             <td class="px-4 py-2 text-sm text-gray-700">
-                                {{ $application->circular->ProgramName }}
+                                {{ $application->portal->ProgramName }}
                             </td>
                             <td class="px-4 py-2 text-sm text-gray-500">
                                 {{ $application->created_at->format('M d, Y h:i A') }}

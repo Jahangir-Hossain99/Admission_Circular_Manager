@@ -10,12 +10,12 @@ class Application extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
 
-    public function circular()
+    public function portal()
     {
-        return $this->belongsTo(Portal::class);
+        return $this->belongsTo(Portal::class,'portal_id');
     }
 
 }

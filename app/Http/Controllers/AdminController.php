@@ -16,11 +16,12 @@ class AdminController extends Controller
      */
     public function dashboard()
     {
-        $users = User::all();
+       $users = User::all();
         $circulars = Portal::all();
-        $applications = Application::with(['user', 'circular'])->latest()->get();
+        $applications = Application::with(['user', 'portal'])->latest()->get();
 
-        return view("admin.dashboard", compact("users","circulars","applications"));
+        return view("admin.dashboard", compact("users", "circulars", "applications"));
+
     }
 
     /**

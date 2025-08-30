@@ -20,17 +20,17 @@
                         <tr class="hover:bg-gray-50">
                             <!-- University Name -->
                             <td class="px-4 py-2 text-sm font-medium text-gray-900">
-                                {{ $application->circular->UniversityName }}
+                                {{ $application->portal->UniversityName }}
                             </td>
 
                             <!-- Program Name -->
                             <td class="px-4 py-2 text-sm text-gray-700">
-                                {{ $application->circular->ProgramName }}
+                                {{ $application->portal->ProgramName }}
                             </td>
 
                             <!-- Deadline -->
                             <td class="px-4 py-2 text-sm text-gray-700">
-                                {{ \Carbon\Carbon::parse($application->circular->ApplicationDeadline)->format('M d, Y') }}
+                                {{ \Carbon\Carbon::parse($application->portal->ApplicationDeadline)->format('M d, Y') }}
                             </td>
 
                             <!-- Status -->
