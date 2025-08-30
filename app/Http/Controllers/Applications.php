@@ -28,7 +28,7 @@ class Applications extends Controller
     $circularId = $request->circular_id;
 
     // Prevent duplicate applications
-    if (Application::where('user_id', $userId)->where('circular_id', $circularId)->exists()) {
+    if (Application::where('user_id', $userId)->where('portal_id', $circularId)->exists()) {
         return redirect()->back()->with('error', 'You have already applied for this portal.');
     }
 
