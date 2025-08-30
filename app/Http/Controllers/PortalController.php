@@ -21,7 +21,7 @@ class PortalController extends Controller
     $appliedCircularIds = [];
     if (auth()->check()) {
         $appliedCircularIds = Application::where('user_id', auth()->id())
-                                        ->pluck('circular_id')
+                                        ->pluck('portal_id')
                                         ->toArray();
     }
 
