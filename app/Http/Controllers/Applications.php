@@ -25,7 +25,7 @@ class Applications extends Controller
     public function store(Request $request)
 {
     $userId = Auth::id();
-    $circularId = $request->circular_id;
+    $circularId = $request->portal_id;
 
     // Prevent duplicate applications
     if (Application::where('user_id', $userId)->where('portal_id', $circularId)->exists()) {
