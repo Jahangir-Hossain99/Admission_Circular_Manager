@@ -48,14 +48,13 @@ class PortalController extends Controller
     public function show(string $id)
     {
         $circular = Portal::find($id);
-        var_dump($circular);
         $appliedCircularIds = [];
-    // if (auth()->check()) {
-    //     $appliedCircularIds = Application::where('user_id', auth()->id())
-    //                                     ->pluck('portal_id')
-    //                                     ->toArray();
-    // }
-    //     return view("circulars.show", compact("circular","appliedCircularIds"));   
+    if (auth()->check()) {
+        $appliedCircularIds = Application::where('user_id', auth()->id())
+                                        ->pluck('portal_id')
+                                        ->toArray();
+    }
+        return view("circulars.show", compact("circular","appliedCircularIds"));   
     }
 
     public function edit(string $id)

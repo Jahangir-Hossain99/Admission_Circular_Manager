@@ -26,7 +26,7 @@ Route::get('circulars/show',function ()  {
 })->name('circulars.show');
 
 Route::get('circulars/index',[PortalController::class, 'index'])->name('circulars.index');
-Route::get('circulars/show',[PortalController::class,'show'])->name('circulars.show');
+Route::get('circulars/show/{id}',[PortalController::class,'show'])->name('circulars.show');
 
 Route::middleware(['admin:user'])->group(function () {
     Route::post('/applications/store', [Applications::class, 'store'])->name('application.store');
