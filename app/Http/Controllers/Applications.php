@@ -35,7 +35,7 @@ class Applications extends Controller
     // Create application
     Application::create([
         'user_id' => $userId,
-        'circular_id' => $circularId,
+        'portal_id' => $circularId,
         'status' => 'pending',
     ]);
 
