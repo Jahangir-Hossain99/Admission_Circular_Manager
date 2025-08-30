@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Application extends Model
 {
-    protected $fillable = ['user_id', 'circular_id', 'status'];
+    protected $fillable = ['user_id', 'portal_id', 'status'];
 
     public function user()
     {
